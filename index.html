@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinterest — Discover Ideas</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <a href="#" class="brand" aria-label="Home"><span class="brand-logo">P</span></a>
+    <button class="home-button" id="homeButton">Home</button>
+
+    <label class="search-box">
+      <span class="search-icon">⌕</span>
+      <input id="searchInput" type="search" placeholder="Search for ideas" aria-label="Search pins">
+      <button id="clearSearch" type="button" aria-label="Clear search">×</button>
+    </label>
+
+    <div class="header-actions">
+      <button class="icon-button" id="exploreButton" title="Search">⌕</button>
+      <button class="icon-button" id="savedButton" title="Saved pins">♡</button>
+      <button class="profile-button" id="profileButton" title="Profile">Z</button>
+    </div>
+  </header>
+
+  <nav class="categories" aria-label="Categories">
+    <button class="category active" data-category="All">All</button>
+    <button class="category" data-category="Fashion">Fashion</button>
+    <button class="category" data-category="Home">Home decor</button>
+    <button class="category" data-category="Food">Food</button>
+    <button class="category" data-category="Travel">Travel</button>
+    <button class="category" data-category="Beauty">Beauty</button>
+    <button class="category" data-category="Art">Art</button>
+    <button class="category" data-category="Study">Study</button>
+  </nav>
+
+  <main>
+    <h1 id="feedTitle" class="feed-title">Ideas for you</h1>
+    <section id="pinGrid" class="pin-grid" aria-label="Pins"></section>
+
+    <div id="emptyState" class="empty-state" hidden>
+      <h2>No pins found</h2>
+      <p>Try a different search or category.</p>
+      <button id="resetButton" class="primary-button">Show all pins</button>
+    </div>
+  </main>
+
+  <button class="floating-add" id="createPin" aria-label="Create a pin">+</button>
+
+  <dialog id="createDialog" class="create-dialog">
+    <div class="dialog-header">
+      <h2>Create a pin</h2>
+      <button id="closeDialog" class="close-button" type="button">×</button>
+    </div>
+
+    <form id="pinForm">
+      <label class="upload-area" for="imageInput">
+        <span class="upload-symbol">↑</span>
+        <strong>Choose an image</strong>
+        <span>Select a picture from your computer</span>
+        <input id="imageInput" type="file" accept="image/*" required>
+        <img id="imagePreview" alt="Image preview" hidden>
+      </label>
+
+      <label class="field-label" for="pinTitle">Title</label>
+      <input class="text-field" id="pinTitle" maxlength="100" placeholder="Add a title" required>
+
+      <label class="field-label" for="pinCategory">Category</label>
+      <select class="text-field" id="pinCategory">
+        <option>Fashion</option>
+        <option>Home</option>
+        <option>Food</option>
+        <option>Travel</option>
+        <option>Beauty</option>
+        <option>Art</option>
+        <option>Study</option>
+      </select>
+
+      <button class="primary-button submit-button" type="submit">Publish pin</button>
+    </form>
+  </dialog>
+
+  <footer>Made with ♡ for your inspiration board.</footer>
+  <script src="script.js"></script>
+</body>
+</html>

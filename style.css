@@ -1,0 +1,574 @@
+
+:root {
+  --red: #e60023;
+  --text: #222;
+  --muted: #767676;
+  --soft: #efefef;
+  --white: #fff;
+  --border: #e5e5e5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--white);
+  font-family: "Inter", Arial, sans-serif;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 68px;
+  padding: 9px 20px;
+  background: var(--white);
+}
+
+.brand {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.brand-logo {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: white;
+  background: var(--red);
+  font-family: Georgia, serif;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.home-button {
+  flex-shrink: 0;
+  padding: 13px 17px;
+  border: 0;
+  border-radius: 24px;
+  background: var(--text);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  height: 48px;
+  gap: 10px;
+  padding: 0 15px;
+  border-radius: 28px;
+  background: var(--soft);
+}
+
+.search-box:focus-within {
+  outline: 2px solid #777;
+}
+
+.search-icon {
+  color: #555;
+  font-size: 25px;
+}
+
+.search-box input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 14px;
+}
+
+#clearSearch {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: #555;
+  font-size: 23px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.icon-button, .profile-button {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font-size: 25px;
+}
+
+.icon-button:hover, .profile-button:hover {
+  background: var(--soft);
+}
+
+.profile-button {
+  width: 38px;
+  height: 38px;
+  background: #f6e6e9;
+  color: #8c3b53;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.categories {
+  position: sticky;
+  top: 68px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  padding: 8px 14px 15px;
+  overflow-x: auto;
+  background: var(--white);
+  scrollbar-width: none;
+}
+
+.categories::-webkit-scrollbar {
+  display: none;
+}
+
+.category {
+  flex-shrink: 0;
+  padding: 11px 13px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.category:hover {
+  background: var(--soft);
+}
+
+.category.active {
+  border-radius: 0;
+  background: transparent;
+  color: var(--text);
+  box-shadow: inset 0 -2px var(--text);
+}
+
+main {
+  width: 100%;
+  padding: 0 14px 40px;
+}
+
+.feed-title {
+  margin: 8px 0 22px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.pin-grid {
+  width: 100%;
+  column-width: 205px;
+  column-gap: 14px;
+}
+
+.pin-card {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 16px;
+  padding: 0;
+  overflow: visible;
+  break-inside: avoid;
+  vertical-align: top;
+}
+
+.pin-image-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #f1f1f1;
+}
+
+.pin-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  border-radius: 15px;
+  object-fit: contain;
+  transition: filter 0.2s ease;
+}
+
+.pin-card:hover .pin-image {
+  filter: brightness(0.94);
+}
+
+.pin-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 8px 3px 3px;
+}
+
+.pin-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.pin-title {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.pin-category {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.pin-actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 4px;
+}
+
+.save-button {
+  flex-shrink: 0;
+  padding: 11px 14px;
+  border: 0;
+  border-radius: 25px;
+  background: var(--red);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.save-button:hover {
+  background: #ad001b;
+}
+
+.save-button.saved {
+  background: #222;
+}
+
+.delete-button {
+  width: 29px;
+  height: 29px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--soft);
+  font-size: 20px;
+}
+
+.empty-state {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.empty-state[hidden] {
+  display: none;
+}
+
+.empty-state p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.primary-button {
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 25px;
+  background: var(--red);
+  color: white;
+  font-weight: 700;
+}
+
+.primary-button:hover {
+  background: #ad001b;
+}
+
+.floating-add {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 25;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 0;
+  border-radius: 50%;
+  background: white;
+  color: #222;
+  box-shadow: 0 2px 12px #00000025;
+  font-size: 32px;
+}
+
+.floating-add:hover {
+  background: #f1f1f1;
+}
+
+.create-dialog {
+  width: min(460px, calc(100% - 28px));
+  max-height: 90vh;
+  padding: 24px;
+  overflow-y: auto;
+  border: 0;
+  border-radius: 22px;
+  background: white;
+  color: var(--text);
+  box-shadow: 0 10px 60px #00000035;
+}
+
+.create-dialog::backdrop {
+  background: #00000070;
+  backdrop-filter: blur(3px);
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dialog-header h2 {
+  margin: 0;
+  font-size: 21px;
+}
+
+.close-button {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--soft);
+  font-size: 25px;
+}
+
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 185px;
+  gap: 10px;
+  padding: 20px;
+  overflow: hidden;
+  border: 2px dashed #ccc;
+  border-radius: 16px;
+  background: #f7f7f7;
+  text-align: center;
+  cursor: pointer;
+}
+
+.upload-symbol {
+  display: grid;
+  place-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: white;
+  font-size: 27px;
+}
+
+.upload-area strong {
+  font-size: 14px;
+}
+
+.upload-area span:nth-of-type(2) {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+#imageInput {
+  width: 100%;
+  font-size: 12px;
+}
+
+#imagePreview {
+  max-width: 100%;
+  max-height: 240px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.field-label {
+  display: block;
+  margin: 18px 0 7px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.text-field {
+  width: 100%;
+  min-height: 45px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+  background: white;
+  color: var(--text);
+}
+
+.text-field:focus {
+  border-color: var(--red);
+}
+
+.submit-button {
+  width: 100%;
+  margin-top: 22px;
+}
+
+footer {
+  padding: 20px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 12px;
+}
+
+@media (min-width: 1500px) {
+  .pin-grid {
+    column-width: 205px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .pin-grid {
+    column-width: 185px;
+  }
+
+  .topbar {
+    padding-inline: 12px;
+    gap: 9px;
+  }
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    min-height: 64px;
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .brand-logo {
+    width: 31px;
+    height: 31px;
+    font-size: 23px;
+  }
+
+  .home-button {
+    padding: 11px 13px;
+    font-size: 12px;
+  }
+
+  .search-box {
+    height: 42px;
+    padding-inline: 10px;
+  }
+
+  .header-actions {
+    gap: 1px;
+  }
+
+  .icon-button {
+    width: 33px;
+    height: 36px;
+    font-size: 21px;
+  }
+
+  .profile-button {
+    width: 31px;
+    height: 31px;
+  }
+
+  .categories {
+    top: 64px;
+    padding: 7px 10px 13px;
+  }
+
+  main {
+    padding: 0 9px 30px;
+  }
+
+  .pin-grid {
+    column-width: 155px;
+    column-gap: 10px;
+  }
+
+  .pin-card {
+    margin-bottom: 11px;
+  }
+
+  .pin-card-content {
+    padding: 6px 2px;
+  }
+
+  .pin-title {
+    font-size: 12px;
+  }
+
+  .save-button {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar {
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    order: 5;
+    flex-basis: 100%;
+  }
+
+  .pin-grid {
+    column-width: 145px;
+    column-gap: 9px;
+  }
+
+  .feed-title {
+    margin: 8px 0 16px;
+    font-size: 19px;
+  }
+
+  .create-dialog {
+    padding: 18px;
+  }
+}
